@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Thoda Complex code ho gaya hai.
+	/*
+	    Jo jo remaining kaam hai, unko sorted order me likh kar ek kaam chef and 1 kaam assistant kar raha hai.
+	    Hum dekh lenge 1 to n tak ki kaun sa kaam nahi hua hai, unka array bana liye hai.
+	    Ab 1 kaam chef and 1 kaam assistant ko de diye hai.
+	*/
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m;
+        cin>>n>>m;
+        vector<int> tasks(m);
+        // Ye tasks completed hai.
+        for(int i=0;i<m;i++)
+            cin>>tasks[i];
+         
+        // Set me daal kar check karna easy hai.   
+        unordered_set<int> st(tasks.begin(),tasks.end());
+        
+        //Ye tasks baaki hai karna.
+        vector<int> remainingTasks;
+        for(int i=1;i<=n;i++){
+            if(st.find(i)==st.end())
+                remainingTasks.push_back(i);
+        }
+        // Sort karne ka need nahi hai kyu ki humne 1 to n ke liye liya hai to already sorted ban gaya.
+        
+        vector<int> chef,assistant;
+        int i=0;
+        int sz = remainingTasks.size();
+        while(i<sz){
+            // 1 kaam chef
+            chef.push_back(remainingTasks[i++]);
+            
+            // Agar tasks khatam na ho gaya ho to 1 assistant.
+            if(i<sz)
+                assistant.push_back(remainingTasks[i++]);
+        }
+        
+        // Agar koi bhi kaam nahi hai to -1 return.
+        // Warna pehle chef ka kaam, phir assistant ka kaam.
+        
+        if(chef.size()==0)
+            cout<<-1<<endl;
+        else{
+            for(int i=0;i<chef.size();i++)
+                cout<<chef[i]<<" ";
+            cout<<endl;
+        }
+        
+        if(assistant.size()==0)
+            cout<<-1<<endl;
+        else{
+            for(int i=0;i<assistant.size();i++)
+                cout<<assistant[i]<<" ";
+            cout<<endl;
+        }
+    }
+}
