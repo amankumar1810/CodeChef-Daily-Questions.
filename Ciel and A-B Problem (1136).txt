@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+//  Ciel and A-B Problem (1136). 
+
+// Ek dum obvious Approach hai.
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    int diff = a - b;
+    
+    // Agar last nein 1 hai to add karne par 2 digit change ho jayega.
+    // isi liye -1 karke last me 8 kar diye hai.
+    if (diff % 10 != 9)
+        diff += 1;
+
+    // Warna +1 hi best hai.
+    else
+        diff -= 1;
+        
+    // Answer
+    cout << diff << endl;
+}
