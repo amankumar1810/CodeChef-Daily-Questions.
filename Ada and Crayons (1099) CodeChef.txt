@@ -1,0 +1,54 @@
+// CodeChef :- Ada and Crayons(1099)
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    // Easy question hai ye.
+    /*
+        Hum ek baar me 1 group jisme same elements hai usko flip kar denge.
+        
+        Hum U and D ke total groups ko count kar lenge.
+        Ab jo minimum hoga usko return kar denge.
+    */
+    int t;
+    cin >> t;
+    while (t--) {
+        string str;
+        cin >> str;
+        int n = str.size();
+        int up = 0, down = 0;
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (str[i] == 'U') {
+                cnt++;
+            }
+            else if (str[i] == 'D') {
+                if (cnt > 0)
+                    up++;
+                cnt = 0;
+            }
+        }
+        // Last wale group ko bhi count karna hoga na.
+        if (cnt > 0)
+            up++;
+            
+        cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (str[i] == 'D') {
+                cnt++;
+            }
+            else if (str[i] == 'U') {
+                if (cnt > 0)
+                    down++;
+                cnt = 0;
+            }
+        }
+        if (cnt > 0)
+            down++;
+            
+        // Dono me se jo minimum hoga, usko return kar denge.
+        cout << min(up, down) << endl;
+    }
+}
