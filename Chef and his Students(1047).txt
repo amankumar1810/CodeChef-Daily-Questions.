@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Initially "><" count karna tha pair mein.
+// Kyu ki diya hai ki sab koi change kar lega position.
+// To ek possibilty hai ki reverse karke new string generate kar lo.
+// CodeChef 6th August Question.
+// Chef and his Students(1047).
+
+// Best way hai ki ab "<>" isko count kar lo, kyu ki sab change ho gaya hai na.
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        string str;
+        cin >> str;
+        int n = str.size();
+        int ans = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (str[i] == '<' && str[i + 1] == '>')
+                ans++;
+        }
+        cout << ans << endl;
+    }
+}
