@@ -1,0 +1,187 @@
+// CodeChef Contest Starters 146 questions.
+
+// 1st (Olympics 2024)(283)
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Self explained question hai ye.
+    int g,s,b;
+    cin>>g>>s>>b;
+    int ans = 0;
+    // Agar 5 se kam hai to jitn achahiye utn add kar do.
+    ans+=(g<5)?(5-g):0;
+    ans+=(s<5)?(5-s):0;
+    ans+=(b<5)?(5-b):0;
+    cout<<ans<<endl;
+}
+
+// 2nd (No Winner)(931)
+#include <bits/stdc++.h>
+using namespace std;
+
+// Hume chahiye ki no winner ho matlab at least 2 ka score same ho jaaye.
+
+// Agar aisa case aaye jisme ki 1 me add karne par wo apne largest se bhi bada ya equal ho jaaye to ye ho sakta hai possible case.
+// Kyu ki isme equal ke barabar add karnege aur hum baaki kisi aur me add kar denge.
+
+bool solve(int a,int b,int c,int m){
+    // b and a, c and a, c and b in sab me dkhenge. 
+    if((b+m>=a) ||(c+m>=a)||(c+m>=b))
+        return true;
+    return false;
+}
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int a,b,c,m;
+        cin>>a>>b>>c>>m;
+        // Hum chhah rahe hai ki decreasing order mein sort ho jaaye.
+        // a>=b>=c
+        int nums[3] = {a,b,c};
+        sort(nums,nums+3);
+        a = nums[2],b = nums[1],c = nums[0];
+        
+        // Solve function kaam kar raha hai.
+        if(solve(a,b,c,m))
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
+}
+
+
+// 3rd (Knockout Tournament)(1279)
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Pura brute force se banaye hai isko contest mein.
+    int t;
+    cin>>t;
+    while(t--){
+        vector<int> nums(16);
+        for(int i=0;i<16;i++)
+            cin>>nums[i];
+        /*
+            Logic ye tha ki pehle ko 0, baaki 2 ko 1, baaki 4 ko 2, baaki 8 ko 3 and last ko 4 victory mil rahi hai.
+            Hum usi basis par sort kiye hai taaki kam score wala pehle aa sake.
+            Pair lene se uska index loss nahi hoga 
+            Ab apne apne index par score assign kar denge.
+        */
+        vector<pair<int,int>> v;
+        for(int i=0;i<16;i++){
+            // value and index.
+            v.push_back({nums[i],i});
+        }
+        sort(v.begin(),v.end());
+        
+        // isi me answer store hoga.
+        vector<int> ans(16);
+        
+        ans[v[0].second] = 0;
+        ans[v[1].second] = 1;
+        ans[v[2].second] = 1;
+        ans[v[3].second] = 2;
+        ans[v[4].second] = 2;
+        ans[v[5].second] = 2;
+        ans[v[6].second] = 2;
+        ans[v[7].second] = 3;
+        ans[v[8].second] = 3;
+        ans[v[9].second] = 3;
+        ans[v[10].second] = 3;
+        ans[v[11].second] = 3;
+        ans[v[12].second] = 3;
+        ans[v[13].second] = 3;
+        ans[v[14].second] = 3;
+        ans[v[15].second] = 4;
+        
+        // Ab print kara do.
+        for(int i=0;i<16;i++)
+            cout<<ans[i]<<" ";
+        cout<<endl;
+    }
+}
+
+// 4th (Permutation Construction)(1389)
+#include <bits/stdc++.h>
+using namespace std;
+
+// Permutation ka saara question observation se ban jaat ahi.
+// Ye bhi easy hi tha.
+
+// Hume index 1 to n-2 ke liye satisfy karana hai.
+// particular index ka value apne left and right ke subtraction ke square se large ya equal hona chahiye.
+// Best way hoga ki 1-1 ka difference par le le elements ko.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        // 1st and last aise karke
+        for (int i = 1; i <= n / 2; i++) {
+            cout << i << " " << n - i + 1 << " ";
+        }
+        // Agar odd no. of elements hai to usko last me daal do, waise bhi koi fark nahi padta usse.
+        if (n % 2 != 0) {
+            cout << n / 2 + 1;
+        }
+        cout << endl;
+    }
+
+}
+
+// 5th (Bouncing Ball)(1607)
+#include <bits/stdc++.h>
+using namespace std;
+
+// itna hard question strangely 1 baar mein contest mein ban gaya tha.
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector < int > nums(n);
+        /*
+            Logic bada hi easy hai.
+            agar left me 1 destroy kare to phir aakar right me karega.
+            Agar 1 taraf pura finish ho jaaye tab stop ho jayega.
+            Aur agar stop hone par sab 0 nahi hua to false
+            
+            Ek tarah se left and right sum dekh rahe hai.
+            Case1  = agar sum same hai to dono mein se kidhar bhi chhoro sab foot jayega, so plus 2
+
+            Case2  = agar sum ka difference 1 hai to dono mein se ek side mein hi saara foot paayega, so plus 1.
+            
+            Case3 = nahi to sab nahi foot paayega.
+        */
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            cin >> nums[i];
+            sum += nums[i];
+        }
+
+        int ans = 0;
+        int left = 0, right = 0;
+        for (int i = 0; i < n; i++) {
+            left += nums[i];
+            // Hum sirf 0 wale par hi place kar sakte hai ball ko.
+            if (nums[i] == 0) {
+                right = (sum - left);
+                if (left == right)
+                    ans += 2;
+                else if (abs(left - right) == 1)
+                    ans += 1;
+                else
+                    ans += 0;
+            }
+        }
+        cout << ans << endl;
+    }
+}
