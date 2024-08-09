@@ -1,0 +1,22 @@
+// 9th August Food Chain(1062)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Ek dum self explained question and code hai iska.
+    int t;
+    cin>>t;
+    while(t--){
+        int e,k;
+        cin>>e>>k;
+        int count = 0;
+        // e se start karte hue jab tak 0 na ho jaaye tab tak ka stage count krna hai hume.
+        // har baar floor value of k se kam ho raha hai.
+        while(e>0){
+            count++;
+            e/=k;
+        }
+        cout<<count<<endl;
+    }
+}
