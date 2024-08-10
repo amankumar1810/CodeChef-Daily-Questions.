@@ -1,0 +1,56 @@
+// 10th August Question.
+// Suspence String (1500).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Easy and interesting question hai ye, maza aaya.
+/*
+    Alice start kar rahi hai game.
+    Alice chhahti hai smallest ans Bob largest.
+    Alice first se nikaal rahi hai and bob last se.
+    
+    Logic ye bolta hai ki ALice ko agar smalest banana hai to 1 last me 
+    hona chahiye aur 0 fisrt mein.
+    
+    Same Bob ko agar largest banana hai to 1 first me 
+    hona chahiye aur 0 last mein.
+    
+    Bas aise hi create kar lenge string.
+*/
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        string str;
+        cin >> str;
+        string temp = "";
+        
+        // Alice 1st and Bob last se.
+        int i = 0, j = n - 1;
+        while (i <= j) {
+            // Alice ke liye 0 fisrt mein aur 1 last mein.
+            if (str[i] == '0')
+                temp = '0' + temp;
+            else
+                temp = temp + '1';
+            i++;// Aaage badhenge.
+            
+            // ek baar check karna jaruri hai nahi to galat answer aa jayega.
+            if (i <= j) {
+                // Bob ke liye 1 fisrt mein aur 0 last mein. 
+            
+                if (str[j] == '1')
+                    temp = '1' + temp;
+                else
+                    temp = temp + '0';
+                j--;
+            }
+        }
+        cout << temp << endl;
+    }
+}
