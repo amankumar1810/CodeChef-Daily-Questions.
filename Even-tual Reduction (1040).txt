@@ -1,0 +1,30 @@
+// Even-tual Reduction (1040)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool solve(string str){
+    vector<int> v(26);
+    for(auto &i:str)
+        v[i-'a']++;
+    for(int i=0;i<26;i++){
+        if(v[i]%2)
+            return false;
+    }
+    return true;
+}
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        string str;
+        cin>>str;
+        if(solve(str))
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
+}
