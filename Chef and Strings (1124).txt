@@ -1,0 +1,39 @@
+// Solved on 12th August.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        string str;
+        cin>>str;// Input string.
+        int i=0;
+        int cnt = 0;
+        int n = str.size();
+        /*
+            Logic simple hai, agar xy ka pair ban jaa raha hai to cnt++.
+            pehle x phir y aa raha ho.
+            ya pehle y phir x aa raha ho.
+            
+            Mil gaya to i+2 yaani pair ban gaya.
+            Nhi to i++ matlab next wale ko check karenge.
+        */
+        while(i<n-1){
+            if(str[i]=='x'&& str[i+1]=='y'){
+                cnt++;
+                i+=2;
+            }
+            else if(str[i]=='y'&& str[i+1]=='x'){
+                cnt++;
+                i+=2;
+            }
+            else
+                i++;
+        }
+        
+        cout<<cnt<<endl;
+    }
+}
