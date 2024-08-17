@@ -1,0 +1,25 @@
+// RCB and Playoffs (788)
+// 18th August 2024.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// bahut hi obvious question hai ye to.
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int x,y,z;
+        cin>>x>>y>>z;
+        // Already score jayada hai.
+        if(x>=y)
+            cout<<"YES"<<endl;
+        // Best hai sab match jeet jaao.
+        // Agar jitne par score jyda ya equal hoga tab YES.
+        else if((x+2*z)>=y)
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
+}
