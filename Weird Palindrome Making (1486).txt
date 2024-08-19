@@ -1,0 +1,38 @@
+// Weird Palindrome Making(1486).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Bahut hi basic question hai ye.
+int main() {
+	// Logic ye hai ki jiska frequency even hai wo to palindrome mein contribute karge hi.
+	
+	// Odd frequency wale ko count karenge.
+	// Pura 1 set character ko dusre character mein change karne ka cost 1 hai.
+    int t;
+    cin>>t;
+    while(t--){
+        long long n;
+        cin>>n;
+        vector<long long> nums(n,0);
+        for(long long i=0;i<n;i++)
+            cin>>nums[i];
+            
+        // Odd frequency ko count kar lenge.
+        int cnt=0;
+        for(auto &i:nums){
+            if(i%2)
+                cnt++;
+        }
+        // Ab count/2 return karenge kyu ki half characters ko hi doosre me change karenge.
+        // odd and odd milkar even ban jayega.
+        
+        // yha thoda brilliant idea hai.
+        // agar count even hai to count/2 integer aayega matlab half-half change ho jayega.
+        // eg cnt = 4 tab cnt/2=2 hoga, matlab koi 2 odd frequency wale character ko baaki 2 me convert kar denge 
+        
+        // agar count odd hai to count/2 half se kam aayega matlab half-half change ho jayega aur 1 odd frquency wla reh jayega..
+        // eg cnt = 5 tab cnt/2=2 hoga, matlab koi 2 odd frequency wale character ko baaki 2 me convert kar denge aur 1 odd frequency reh jayega jisko beech me bhi rakhkar palindrome ban sakta hai.
+        cout<<cnt/2<<endl;
+    }
+}
