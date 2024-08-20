@@ -1,0 +1,52 @@
+// Warrior Chef(1433).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Binary Search on Answers use kiya gya hai.
+// Minimum value chahiye hume.
+
+// Agar ye function >0 retur karega tab hi consider karenge isko.
+int solve(vector<int> &stren, int h, int x){
+    for(int i=0;i<stren.size();i++){
+        // If an enemy's strength is less than or equal to Chef's resistance (x), Chef wins without losing any strength.
+        if(stren[i]<=x)
+            h-=0;
+            
+        // Agar enemy strength jyada ho resistance se to humara initial strength jyada hona chahiye.
+        else if(stren[i]>x && h>stren[i])
+            h-=stren[i];
+            
+        // Nhi to ye x ka value possible nahi hai.
+        else
+            return -1;
+    }
+    return h;
+}
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n,h;
+        cin>>n>>h;
+        vector<int> stren(n);
+        for(int i=0;i<n;i++)
+            cin>>stren[i];
+        
+        // Binary Search ke help se Search space kam karte jaayenge.    
+        int low = 0,high = INT_MAX;
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            
+            // Hume minimum value chahiye.
+            if(solve(stren,h,mid)>0)
+                high = mid-1;
+            else
+                low = mid+1;
+        }
+        // Low invalid se valid tak pahuch jayega aur high valid se invalid.
+        cout<<low<<endl;
+    }
+}
