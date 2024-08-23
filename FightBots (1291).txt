@@ -1,0 +1,52 @@
+// FightBots (CodeChef 1291).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+/*
+    Ek dum Brute-Force se banega ye question.
+    Up = (a,b+1);
+    Down = (a,b-1);
+    Right = (a+1,b);
+    Left = (a-1,b);
+    
+    down wala ulta lag raha hai but ye cartesian co-ord. jo math me banate hai usko follow kiya hai.
+    
+    Har second ke baad dono ke postion ka diff. nikaal lenge.
+    Agar ye time ke equal aaya matlab waha jaa sakta hai.
+    abs diff. lene par ye ensure ho jayega ki kahi bhi jaa sakta hai Bob ka bot.
+*/
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n,x,y;
+        cin>>n>>x>>y;
+        
+        string str;
+        cin>>str;
+        
+        bool win = false;
+        
+        int a=0,b=0;
+        for(int i=0;i<n;i++){
+            if(str[i]=='U')
+                b++;
+            else if(str[i]=='D')
+                b--;
+            else if(str[i]=='L')
+                a--;
+            else if(str[i]=='R')
+                a++;
+                
+            if(abs(x-a)+abs(y-b)==(i+1))
+                win=true;
+        }
+        // kisi bhi ek moment par coincide ho gaya matlab Bob win.
+        if(win)
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
+}
