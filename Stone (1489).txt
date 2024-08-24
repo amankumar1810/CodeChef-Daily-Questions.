@@ -1,0 +1,54 @@
+// Stone (1489).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Kaam ye karna hai ki maximum element nikaalo aur saare elements ko 
+// max-element kar do
+
+// Ek observation se dikha ki bas 2 hi baar change hua hai phir repeated ho raha hai.
+// Odd ke liye 1 pattern and even ke liye 1 pattern.
+
+int main() {
+    // your code goes here
+    // int se kaam nahi chal raha hai.
+    long long n, k;
+    cin >> n >> k;
+    vector < long long > nums(n);
+    for (long long i = 0; i < n; i++)
+        cin >> nums[i];
+    long long maxi = * max_element(nums.begin(), nums.end());// finding max element
+    
+    // odd wala ka aisa hoga.
+    vector < long long > temp1(n);
+    for (long long i = 0; i < n; i++)
+        temp1[i] = maxi - nums[i];
+
+    // Ab array change ho gaya hai na.
+    maxi = * max_element(temp1.begin(), temp1.end());
+    
+    // Even wale ke liye aisa hoga.
+    vector < long long > temp2(n);
+    for (long long i = 0; i < n; i++)
+        temp2[i] = maxi - temp1[i];
+        
+    // Agar k=0 hai tab no change hoga, usko alag se likh do.
+    if (k == 0) {
+        for (long long i = 0; i < n; i++)
+            cout << nums[i] << " ";
+        cout << endl;
+    }
+    // Baaki sab ke liye alag se.
+    else {
+        if (k % 2) {
+            for (long long i = 0; i < n; i++)
+                cout << temp1[i] << " ";
+            cout << endl;
+        }
+        else {
+            for (long long i = 0; i < n; i++)
+                cout << temp2[i] << " ";
+            cout << endl;
+        }
+    }
+}
