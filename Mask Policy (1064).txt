@@ -1,0 +1,24 @@
+// Solved on 25th August.
+// Mask Policy (1064).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Minimum logo ko mask pehnana hai.
+	// Ya to saare affected logo ko pehna do ya to saare remaining logo ko.
+	// Jo kam hai usko pehnana denge.
+    int t;
+    cin>>t;
+    while(t--){
+        int total;
+        cin>>total;
+        int affected;
+        cin>>affected;
+        int remaining = total - affected;
+        if(affected<remaining)
+            cout<<affected<<endl;
+        else
+            cout<<remaining<<endl;
+    }
+}
