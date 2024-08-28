@@ -1,0 +1,28 @@
+// Solved on 28th August.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	/*
+	    Ye ek pattern follow ho raha hai.
+	    avg nikaal kar B[i] ka absolute value minus kar do.
+	*/
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<long long> B(n);
+        long long sum = 0;
+        for(int i=0;i<n;i++){
+            cin>>B[i];
+            sum+=B[i];
+        }
+        long long avg = sum/(n+1);
+        for(int i=0;i<n;i++){
+            cout<<abs(avg-B[i])<<" ";
+        }
+        cout<<endl;
+    }
+}
