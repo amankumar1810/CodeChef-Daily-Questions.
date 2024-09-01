@@ -1,0 +1,44 @@
+// Solved on 1st September.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// After huge observation.
+
+/*
+    Ek baar me ya to 1 ya to 2 bhej sakte hai but dono same hona chahiye.
+    Last walon ko ache se deal karna hai.
+*/
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        string str;
+        cin >> str;
+        
+        // Base case.
+        if (n == 1) {
+            cout << 1 << endl;
+            return 0;
+        }
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            // Last index par hai tab i+1 exist hi nahi karega.
+            if (i == n - 1) {
+                cnt++;
+                continue;
+            }
+            // Nahi to agar dono same hai to dono ko bhej do.
+            else {
+                if (str[i] == str[i + 1])
+                    i++;
+                cnt++;
+            }
+        }
+        cout << cnt << endl;
+    }
+}
