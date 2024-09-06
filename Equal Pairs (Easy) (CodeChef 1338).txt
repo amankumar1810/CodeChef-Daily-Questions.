@@ -1,0 +1,49 @@
+// Equal Pairs (Easy) (CC 1338).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Jis number ka freq. sabse jyda hai, saare 0 ko usi me change kar do.
+	
+	// Ab nested for loop se count kar lo.
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> v(101);// frequency array.
+        vector<int> nums(n);
+        for(int i=0;i<n;i++){
+            cin>>nums[i];
+            v[nums[i]]++;
+        }
+        
+        int temp = -1;
+        int cnt = 0;
+        
+        // finding element with max occurence except 0.
+        for(int i=1;i<101;i++){
+            if(v[i]>cnt){
+                cnt = v[i];
+                temp = i;
+            }
+        }
+        
+        // converting all 0 to that element with highest freq.
+        for(int i=0;i<n;i++){
+            if(nums[i]==0)
+                nums[i] = temp;
+        }
+        
+        // Using nested for-loop to find answer.
+        int ans = 0;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(nums[i]==nums[j])
+                    ans++;
+            }
+        }
+        cout<<ans<<endl;
+    }
+}
