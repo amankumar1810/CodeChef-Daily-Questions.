@@ -1,0 +1,44 @@
+// Courses in an university (1417).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// sabse bada catch hai ki [a[i]<i] hai yaha par.
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> a(n);
+        for(int i=0;i<n;i++)
+            cin>>a[i];
+        /*
+            Basically diya hua hai ki 1st course padhne ke liye 1 pre-requiste hai is tarah se.
+            Humko waise courses ke number ko maximixe karna hai jo kisi ke pre-requiste na ho.
+            Hum log already pre-req. courses ko hi doosre courses ko allocate kar denge.
+            
+            eg = 
+            index- 1 2 3 4 5 6 7
+            value- 0 1 0 2 3 4 2
+            yaha a[i]<i pakka hoga (1-based indexing)
+            
+            bina pre-req wale courses ko maximize karne ka 1 tarika ye hai.
+            1 - X
+            2 - 1
+            3 - X
+            4 - 1,3
+            5 - 1,3,4
+            6 - 1,3,4,5
+            7 - 1,3
+            
+            X matlab koi pre-req nahi.
+            Jo courses ke pre-req nahi hai unhe hi doosre ke pre-req me add kar denge
+            isse bina pre-req wale courses ka count badh jayega.
+            hum dekh rahe hai ki maximum value wala hi bas jyaada pre-req. le raha hai
+            To is tarah answer aa jayega.
+        */
+        // bas maximum  element nikaal kar use no. of courses se minus kar denge.
+        cout<<n-*max_element(a.begin(),a.end())<<endl; 
+    }
+}
