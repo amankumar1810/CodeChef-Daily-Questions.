@@ -1,0 +1,33 @@
+// Make Bob Win(1450).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Hume bas 1st and last me 0 nahi rakne hai, tab BOB pakka jeet jayega.
+	
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        string str;
+        cin>>str;
+        /*  Agar 1 hi character hai tab:-
+            Agar wo 1 hai to koi need nahi h flip karne ka.
+            Agar wo 0 hai to flip kar do usko.
+        */
+        if(n==1)
+            cout<<(str[0]=='0'?1:0)<<endl;
+        
+        // Nahi to bas hume 1st and last character ke liye check karna hai.
+        else{
+            int cnt = 0;
+            if(str[0]=='0')
+                cnt++;
+            if(str[n-1]=='0')
+                cnt++;
+            cout<<cnt<<endl;
+        }
+    }
+}
