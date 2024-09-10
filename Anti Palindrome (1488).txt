@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    // hume minimum characters ko chnage karke anti-palindrome banana hai
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        string str;
+        cin >> str;
+        // Hum frequencies ko map me store karenge taaki comparison easy ho jaaye.
+        map < int, int > mp;
+        for (auto & i: str)
+            mp[i]++;
+        
+        // agar sirf 1 hi element hai to dimaag lagana padega
+        if (mp.size() == 1) {
+            // agar even size ka hai to koi 1 character ko change karne se kaam chal jayega.
+            // eg = aaaaaa => aaaaab
+            // isme b ko middle me rakhkar kaam nahi chal sakta hai.
+            if (str.size() % 2 == 0)
+                cout << 1 << endl;
+            
+            // agar odd size ka hai to - 
+            // eg = aaaaaaa => aaaaaab
+            // isme b ko middle me rakhkar kaam chal sakta hai => aaabaaa
+            // Tab hume 2 characters ko change karna hoga.
+            else
+                cout << 2 << endl;
+        }
+        else {
+            // agar 1 se jyada element hai map me to - 
+            // Jinka even frequencies hai wo palindrome me contribute karenge.
+            // Hume odd frequency waalon ko count karna hoga.
+            int cnt = 0;
+            for (auto & i: mp) {
+                if (i.second % 2)
+                    cnt++;
+            }
+            // agar ye count 1 se jyada hua to obviously wo khud anti-palindrome hai.
+            if (cnt > 1)
+                cout << 0 << endl;
+            // Nahi to 1 ko change karne se kaam chal jayega.
+            else
+                cout << 1 << endl;
+        }
+    }
+}
