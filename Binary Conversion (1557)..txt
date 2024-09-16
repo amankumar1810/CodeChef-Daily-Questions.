@@ -1,0 +1,63 @@
+// Binary Conversion (1557).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool solve(int n,int k,string s,string t){
+    int a=0,b=0;
+    for(auto &i:s){
+        if(i=='1')
+            a++;
+        else
+            b++;
+    }
+    int c=0,d=0;
+    for(auto &i:t){
+        if(i=='1')
+            c++;
+        else
+            d++;
+    }
+    if(a!=c && b!=d)
+        return false;
+    int same=0,diff=0;
+    for(int i=0;i<n;i++){
+        if(s[i]!=t[i])
+            diff++;
+        else
+            same++;
+    }
+    
+    
+    if(diff==0 && k%2==0)
+        return true;
+    int temp = diff/2;
+    
+    if(k==temp)
+        return true;
+    else if(k<temp)
+        return false;
+    else if(k>temp){
+        
+        if(a>=2)
+            return true;
+        if(b>=2)
+            return true;
+        return false;
+    }
+}
+
+int main() {
+    int T;
+    cin>>T;
+    while(T--){
+        int n,k;
+        cin>>n>>k;
+        string s,t;
+        cin>>s>>t;
+        if(solve(n,k,s,t))
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
+}
