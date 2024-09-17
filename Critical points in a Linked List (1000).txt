@@ -1,0 +1,35 @@
+// Critical points in a Linked List (1000).
+
+// 1st and last wala nahi ho sakta hai.
+int solve(Node* head){
+    Node *temp = head;
+    int cnt = 0;
+    while(temp!=NULL){
+        cnt++;
+        temp = temp->next;
+    }
+    // node 3 se kam hai to koi nahi hoga.
+    if(cnt<3)
+        return 0;
+        
+    // sliding pointer wala concept use kiye hai.
+    Node *curr = head->next;
+    Node *prev = head;
+    Node *forw = head->next->next;
+    
+    int ans = 0;
+    while(forw!=NULL){
+        // agar dono side se bada ho.
+        if(curr->data > forw->data && curr->data > prev->data)
+            ans++;
+        
+        // agar dono side se chhota ho.
+        if(curr->data < forw->data && curr->data < prev->data)
+            ans++;
+        prev = curr;
+        curr = forw;
+        forw = forw->next;
+    }
+    
+    return ans;
+}
