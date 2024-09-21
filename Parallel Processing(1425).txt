@@ -1,0 +1,60 @@
+// Parallel Processing (1425).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Mera logic ye raha ki hum do half me task ko distribute karenge.
+	// Usme se jo bada ho (assigned half task or remaining task usko return karna hai).
+	
+    int t;
+    cin>>t;
+    while(t--){
+        long long n;
+        cin>>n;
+        vector<long long> nums(n);
+        long long sum=0;
+        for(long long i=0;i<n;i++){
+            cin>>nums[i];
+            sum+=nums[i];
+        }
+        
+        // total time ke liye prefix sum array banana padega.
+        vector<long long> prefix(n);
+        prefix[0] = nums[0];
+        for(long long i=1;i<n;i++)
+            prefix[i]=nums[i]+prefix[i-1];
+        
+        // Ab best case to ye ho raha hai ki half-half task dono ko distribute kar do taaki minimum time me ho jaaye.
+        // Agar total odd hai to half karne par 0.5 small value aata hai.
+        // Usi ko deal karne ke liye maximum ot taht task and remaining task le liye hai.
+        long long val = sum/2;
+        long long temp1=0,temp2=0;
+        for(int i=0;i<n;i++){
+            // Jaise hi ye case arise hua to ho sakta hai answer aa jaaye.
+            if(prefix[i]>=val){
+                temp1 = max(prefix[i],sum-prefix[i]);
+                
+                // Ab ek case ye bhi ho sakta hai ki usse piche koi ek aisa task ho jisme kam time lag raha ho to usko bhi dekh lenge.
+                /*
+                    eg:-
+                    sum = 45
+                    21 and 27 ho tab humara loop jaakar 27 par rukega tab answer 27 hoga but agar 21 consider kare to answer 45-21 = 24 hoga
+                    Iska matlab piche wala ko bhi dekhna padega.
+                    
+                    In sab ke alawa aur koi important nahi hoga.
+                */
+                if(i>0){
+                    temp2 = max(prefix[i-1],sum-prefix[i-1]);
+                }
+                else{
+                    temp2 = INT_MAX;
+                }
+                break;
+            }
+        }
+        
+        // Dono me se jo minimum aa raha hai usko le lenge.
+        cout<<min(temp1,temp2)<<endl;
+    }
+}
