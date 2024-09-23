@@ -1,0 +1,48 @@
+// Evacuate to Moon (1479).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+/*
+    Easy logic hai iska.
+    Jyada capacity wale car ko jyada power waale se hi charge karenge.
+    
+    Agar H power mein capacity se jyaada charge kar de raha hai to capacity ke barabar hi lenge, jyada nahi.
+*/
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        long long n,m,h;
+        cin>>n>>m>>h;
+        vector<long long> capacity(n);
+        for(int i=0;i<n;i++)
+            cin>>capacity[i];
+        vector<long long> power(m);
+        for(int i=0;i<m;i++)
+            cin>>power[i];
+        
+        // Taaki ek order mein aa jaaye.
+        sort(capacity.begin(),capacity.end());
+        sort(power.begin(),power.end());
+        
+        long long ans = 0;
+        int i=n-1,j=m-1;
+        while(i>=0 && j>=0){
+            long long temp = power[j]*h;
+            
+            // capacity se kam ya equal hai to theek hai.
+            if(temp<=capacity[i])
+                ans+=temp;
+                
+            // Nahi to capacity ke equal hi.
+            else
+                ans+=capacity[i];
+            i--;
+            j--;
+        }
+        cout<<ans<<endl;
+    }
+}
