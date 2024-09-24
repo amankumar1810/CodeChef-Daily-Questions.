@@ -1,0 +1,57 @@
+// Stone Pile (1200).
+
+// Bahut hi basic question hai.
+// Jo bola gaya hai wo kar diye hai.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// top se nikaal kar bottom mein daalna hai to queue use karenge.
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        queue<int> q;
+        for(int i=0;i<n;i++){
+            int temp = 0;
+            cin>>temp;
+            q.push(temp);
+        }
+        bool flag = true;
+        while(q.size()>1){
+            if(flag==true){
+                // Aman top to bottom ek baar kar raha hai.
+                int curr = q.front();
+                q.pop();
+                q.push(curr);
+                q.pop();
+            }
+            else{
+                // Akshat top to bottom do baar kar raha hai.
+                // size>1 check karna jaruri hai.
+                if(q.size()>1){
+                    int curr = q.front();
+                    q.pop();
+                    q.push(curr);
+                    curr = q.front();
+                    q.pop();
+                    q.push(curr);
+                    q.pop();
+                }
+            }
+            // har baar chance change hoga.
+            flag = !flag;
+        }
+        
+        // Aman ke liye flag=true tha.
+        // Jab baar baar flag change ho raha hai to Aman ke 1 baar chalne par flag false set ho jaayega.
+        if(flag==false){
+            cout<<1<<" "<<q.front()<<endl;
+        }
+        else{
+            cout<<0<<" "<<q.front()<<endl;
+        }
+    }
+}
