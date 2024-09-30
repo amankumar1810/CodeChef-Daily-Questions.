@@ -1,0 +1,29 @@
+// WA Test Cases (976).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Jo jo failed hai unka alag vector bana lo.
+// Ab sort karke smallest value nikaal lo.
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> nums(n);
+        for(int i=0;i<n;i++)
+            cin>>nums[i];
+        string str;
+        cin>>str;
+        vector<int> failed;
+        for(int i=0;i<n;i++){
+            if(str[i]=='0')
+                failed.push_back(nums[i]);
+        }
+        sort(failed.begin(),failed.end());
+        cout<<failed[0]<<endl;
+    }
+
+}
