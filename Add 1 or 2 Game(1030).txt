@@ -1,0 +1,20 @@
+// Add 1 or 2 Game (CodeChef 1030).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// Bahut hi logical hai ki jab 1 hoga to ALICE usko 2 karke jeet jaayegi.
+	// Uske baad har case mein BOB hi jeetega.
+	
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        if(n==1)
+            cout<<"ALICE"<<endl;
+        else
+            cout<<"BOB"<<endl;
+    }
+}
