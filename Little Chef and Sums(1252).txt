@@ -1,0 +1,50 @@
+// Little Chef and Sums (CC 1252).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        long long n;
+        cin>>n;
+        
+        // Input Array.
+        vector<long long> nums(n);
+        for(int i=0;i<n;i++)
+            cin>>nums[i];
+            
+        // Prefix Sum.
+        vector<long long> prefix(n);
+        prefix[0] = nums[0];
+        for(int i=1;i<n;i++)
+            prefix[i] = prefix[i-1]+nums[i];
+        
+        
+        // Suffix Sum.
+        vector<long long> suffix(n);
+        suffix[n-1] = nums[n-1];
+        for(int i=n-2;i>=0;i--)
+            suffix[i] = suffix[i+1]+nums[i];
+         
+        // Sum Array of Prefix and Suffix.
+        vector<long long> sum(n);
+        for(int i=0;i<n;i++)
+            sum[i] = prefix[i]+suffix[i];
+        
+        // Finding minimum value index.  
+        int idx = -1;    
+        long long mini = 1e18;
+        for(int i=0;i<n;i++){
+            if(sum[i]<mini){
+                idx = i;
+                mini = sum[i];
+            }
+        }
+        
+        // 1-based indexing.
+        cout<<idx+1<<endl;
+    }
+}
