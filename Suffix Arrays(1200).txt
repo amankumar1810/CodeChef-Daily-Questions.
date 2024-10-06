@@ -1,0 +1,64 @@
+// Suffix Arrays (1200).
+// Maximum GCD after removing 1 element from array.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// GCD calculating function.
+int gcd(int a,int b){
+    if(a%b==0)
+        return b;
+    if(a<b)
+        swap(a,b);
+    while(b>0){
+        a = a%b;
+        swap(a,b);
+    }
+    return a;
+}
+
+/*
+    Logic ye hai ki hume har ek-ek element ko remove karke gcd nikaalna hoga aur jisme maximum answer aayega wahi answer hoga.
+    
+    Iske liye hum prefix and suffix array banaye hai.
+    Isme sum nahi balki gcd ko store karenge.
+    
+    Ab har ek value ko ignore karte hue maximum possible gcd nikaal lenge
+*/
+int main() {
+	// your code goes here
+    int n;
+    cin>>n;
+    vector<int> nums(n);
+    for(int i=0;i<n;i++)
+        cin>>nums[i];
+    
+    // prefix gcd array.    
+    vector<int> prefix(n);
+    prefix[0] = nums[0];
+    for(int i=1;i<n;i++)
+        prefix[i] = gcd(nums[i],prefix[i-1]);
+     
+    // suffix gcd array.   
+    vector<int> suffix(n);
+    suffix[n-1] = nums[n-1];
+    for(int i=n-2;i>=0;i--)
+        suffix[i] = gcd(nums[i],suffix[i+1]);
+    
+    // edge case.    
+    if(n==1)
+        return nums[0];
+        
+    // 1st element and last element ignore karne par jo answer aayega,
+    int maxGCD = max(suffix[1],prefix[n-2]);
+    
+    /*
+        Ab i-th element ko ignore karna hai.
+        prefix[i-1] and suffix[i+1] se aisa ho sakta hai.
+    */
+    for(int i=1;i<n-1;i++)
+        maxGCD = max(maxGCD,gcd(prefix[i-1],suffix[i+1]));
+    
+    // maximum answer return hoga.    
+    cout<<maxGCD<<endl;
+}
