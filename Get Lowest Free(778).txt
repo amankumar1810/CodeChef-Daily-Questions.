@@ -1,0 +1,17 @@
+// Get Lowest Free(778)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int a,b,c;
+        cin>>a>>b>>c;
+        // Jo minimum price wala hoga uska charge nahi lagega.
+        int ans = (a+b+c)-min({a,b,c});
+        cout<<ans<<endl;
+    }
+}
