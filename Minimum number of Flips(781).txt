@@ -1,0 +1,46 @@
+// Minimum number of Flips(781).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+/*
+    Hume -1 and +1 ko equalize karke 0 banana hai sum.
+    
+    Agar n odd hua to possible nahi hai.
+    Nahi to dono ka absolute difference ka half answer hoga.
+*/
+int solve(int n, vector < int > & nums) {
+    int pos = 0, neg = 0;
+    for (int i = 0; i < n; i++) {
+        // + and - ko count kar lenge.
+        if (nums[i] == 1)
+            pos++;
+        else
+            neg++;
+    }
+    
+    // Not possible case.
+    if (n % 2)
+        return -1;
+
+    // General Case.
+    return abs(pos - neg) / 2;
+}
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector < int > nums(n);
+
+        for (int i = 0; i < n; i++) {
+            cin >> nums[i];
+        }
+
+        cout << solve(n, nums) << endl;
+
+    }
+    return 0;
+}
