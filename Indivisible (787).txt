@@ -1,0 +1,26 @@
+// Indivisible (787)
+
+// 100 se chhota waisa number chahiye jo teeno se divisible na ho.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int solve(int a, int b, int c) {
+    // loop 1 se 99 tak bhiu chala sakte hai.
+    for (int i = 99; i > 0; i--) {
+        if (i % a != 0 && i % b != 0 && i % c != 0)
+            return i;
+    }
+}
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int a, b, c;
+        cin >> a >> b >> c;
+
+        cout << solve(a, b, c) << endl;
+    }
+}
