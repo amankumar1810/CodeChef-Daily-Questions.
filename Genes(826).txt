@@ -1,0 +1,22 @@
+// Genes (826).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    char a,b;
+    cin>>a>>b;
+    
+    // same hua to wahi.
+    if(a==b)
+        cout<<a<<endl;
+        
+    // order hai - R (brown), B (blue) and G(green).
+    else if((a=='R' && b=='B') ||(a=='B' && b=='R'))
+        cout<<"R"<<endl;
+    else if((a=='R' && b=='G') ||(a=='G' && b=='R'))
+        cout<<"R"<<endl;
+    else if((a=='B' && b=='G') ||(a=='G' && b=='B'))
+        cout<<"B"<<endl;
+}
