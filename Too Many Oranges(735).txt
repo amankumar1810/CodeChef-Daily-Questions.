@@ -1,0 +1,19 @@
+// Too Many Oranges (735).
+
+// Ek dum obvious logic kaam kar raha hai yaha par.
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
+        if(k<10*n || k>12*n)
+            cout<<"NO"<<endl;
+        else 
+            cout<<"YES"<<endl;
+    }
+}
