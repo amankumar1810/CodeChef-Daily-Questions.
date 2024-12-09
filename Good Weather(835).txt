@@ -1,0 +1,25 @@
+// Good Weather (835).
+
+// Sunny days 4 ya usse jyaada hone chahiye.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        vector<int> nums(7);
+        int cnt = 0;
+        for(int i=0;i<7;i++){
+            cin>>nums[i];
+            if(nums[i]==1)
+                cnt++;
+        }
+        if(cnt>=4)
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
+}
