@@ -1,0 +1,51 @@
+// Swap and Flip(1302).
+
+// Bahut acha question hai ye.
+/*
+    Pehle hum swapping ke baare mein sochenge.
+    Phir flipping ka sochenge.
+    Dono mein se koi ek hi operation kar sakte hai.
+    
+    Hum set bits count kar liye hai.
+    Agar same hai to swapping se kaam chal jayega.
+    
+    Nahi chala kaam to humara dono mein set bits ka total count even hona chahiye
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        string s, t;
+        cin >> s >> t;
+        // Already equal.
+        if (s == t) {
+            cout << "YES" << endl;
+            continue;
+        }
+        // counting set bits.
+        int cnt1a = 0, cnt2a = 0;
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '1')
+                cnt1a++;
+            if (t[i] == '1')
+                cnt2a++;
+        }
+        // Can do swapping
+        if (cnt1a == cnt2a)
+            cout << "YES" << endl;
+        else {
+            // Can perform flipping.
+            if ((cnt1a + cnt2a)%2==0)
+                cout << "YES" << endl;
+            // Not possible.
+            else
+                cout << "NO" << endl;
+        }
+    }
+}
