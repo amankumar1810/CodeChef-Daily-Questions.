@@ -1,0 +1,48 @@
+// Average Permutation(1401).
+
+// Solution section se hint liye hai.
+/*
+    Permutation ka average likh kar dekhne par mila ki 1st and last term  1 hi baar aayega.
+    2nd and 2nd last term 2 baar aayega
+    Baaki saar term 3 baar aayega.
+    
+    Isi hisaab se bade values ko deal kar liye hai.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        
+        // Base case.
+        if (n == 3) {
+            cout << 1 << " " << 2 << " " << 3 << endl;
+            continue;
+        }
+        
+        vector < int > ans(n);
+        // 2 sabse bade ek baar aaye.
+        ans[0] = n; 
+        ans[n - 1] = n - 1; 
+        
+        // uske baad ke 2 baar aaye.
+        ans[1] = n - 2;
+        ans[n - 2] = n - 3;
+
+        // baaki ke values.
+        int temp = 1;
+        for (int i = 2; i < n - 2; i++) {
+            ans[i] = temp++;
+        }
+        
+        // Printing.
+        for (int & i: ans)
+            cout << i << " ";
+        cout << endl;
+    }
+}
