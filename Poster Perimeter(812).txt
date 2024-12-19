@@ -1,0 +1,40 @@
+// Poster Perimeter(812).
+
+// In general hum saara perimeter bana sakte hai.
+// agar n-even then 0 remaining else n-odd then 1 remaining.
+// As minimum possible perimeter will be 4 for 1-1 length and width.
+// isi liye usko deal kar lo.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m,k;
+        cin>>n>>m>>k;
+        int peri = 2*(n+m);
+        
+        // Agar perimeter kam aa rah ahai to maximum utna hi possible hai.
+        // to return kar do jitna difference hai.
+        if(peri<k){
+            cout<<(k-peri)<<endl;
+        }
+        
+        else{
+            // alag se deal kar lo.
+            if(k==1||k==2||k==3)
+                cout<<4-k<<endl;
+            
+            // As discussed.
+            else{
+                if(k%2==0)
+                    cout<<0<<endl;
+                else
+                    cout<<1<<endl;
+            }
+        }
+    }
+}
