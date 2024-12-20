@@ -1,0 +1,72 @@
+// Mighty Friend(1406).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
+        // Taking input.
+        vector<int> nums(n);
+        for(int i=0;i<n;i++)
+            cin>>nums[i];
+        
+        // Checking is it possible without single swap.
+        long long motu_init = 0,tomu_init=0;
+        for(int i=0;i<n;i++){
+            if(i%2==0)
+                motu_init+=nums[i];
+            else
+                tomu_init+=nums[i];
+        }
+        if(tomu_init>motu_init)
+            cout<<"YES"<<endl;
+        
+        else{
+            // k- highest of motu and k-smallest of tomu.
+            priority_queue<int> motu_pq;
+            priority_queue<int,vector<int>,greater<int>> tomu_pq;
+            for(int i=0;i<n;i++){
+                if(i%2==0)
+                    motu_pq.push(nums[i]);
+                else
+                    tomu_pq.push(nums[i]);
+            }
+            
+            long long motu_score = 0,tomu_score = 0;
+            // Hum maximum k baar ya n/2 bar hi swap kar sakte hai.
+            // Aisa is liye kyu ki hum maximum n/2 hi value add kar sakte hai tomu ke liye.
+            int temp = min(k,n/2);
+            while(temp>0 && !motu_pq.empty()){
+                tomu_score+=motu_pq.top();
+                motu_pq.pop();
+                temp--;
+            }
+            
+            temp = min(k,n/2);
+            while(temp>0 && !tomu_pq.empty()){
+                motu_score+=tomu_pq.top();
+                tomu_pq.pop();
+                temp--;
+            }
+            
+            while(!motu_pq.empty()){
+                motu_score+=motu_pq.top();
+                motu_pq.pop();
+            }
+            while(!tomu_pq.empty()){
+                tomu_score+=tomu_pq.top();
+                tomu_pq.pop();
+            }
+            
+            if(tomu_score>motu_score)
+                cout<<"YES"<<endl;
+            else
+                cout<<"NO"<<endl;
+        }
+    }
+}
