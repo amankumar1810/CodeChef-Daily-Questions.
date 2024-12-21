@@ -1,0 +1,30 @@
+// Hattrick(853)
+
+// Saara khel yaha par input lene ka hai.
+// String ke form mein lenge input.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool solve(vector < string > & nums) {
+    for (int i = 0; i < 4; i++) {
+        // lagataar 3 out.
+        if (nums[i] == "W" && nums[i + 1] == "W" && nums[i + 2] == "W")
+            return true;
+    }
+    return false;
+}
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        vector < string > nums(6);
+        for (int i = 0; i < 6; i++)
+            cin >> nums[i];
+        if (solve(nums))
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
+}
