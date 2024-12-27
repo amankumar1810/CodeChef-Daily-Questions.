@@ -1,0 +1,36 @@
+// Plusle and Minun on Array(1412).
+
+// Bas ek baar nikaal liye hai ki swap karke kaun sa value aa rha hai.
+// Dekh lenge ki swap karna sahi hoga ki nahi.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    long long t;
+    cin >> t;
+    while (t--) {
+        long long n;
+        cin >> n;
+        vector < long long > nums(n);
+        for (long long i = 0; i < n; i++)
+            cin >> nums[i];
+
+        long long mini = abs(nums[0]), maxi = abs(nums[1]);
+        long long sum_even = 0, sum_odd = 0;
+        for (long long i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                mini = min(mini, abs(nums[i]));
+                sum_even += abs(nums[i]);
+            }
+            else {
+                maxi = max(maxi, abs(nums[i]));
+                sum_odd += abs(nums[i]);
+            }
+        }
+        long long ans1 = sum_even - sum_odd;
+        long long ans2 = sum_even - sum_odd + 2 * (maxi - mini);
+        cout << max(ans1, ans2) << endl;
+    }
+}
