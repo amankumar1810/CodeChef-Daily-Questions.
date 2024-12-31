@@ -1,4 +1,4 @@
-// Parallel Processing (1425).
+// Parallel Processing(1425).
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -27,7 +27,7 @@ int main() {
         
         // Ab best case to ye ho raha hai ki half-half task dono ko distribute kar do taaki minimum time me ho jaaye.
         // Agar total odd hai to half karne par 0.5 small value aata hai.
-        // Usi ko deal karne ke liye maximum ot taht task and remaining task le liye hai.
+        // Usi ko deal karne ke liye maximum of that task and remaining task le liye hai.
         long long val = sum/2;
         long long temp1=0,temp2=0;
         for(int i=0;i<n;i++){
