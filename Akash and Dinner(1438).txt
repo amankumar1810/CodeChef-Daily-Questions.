@@ -1,0 +1,50 @@
+// Akash and Dinner(1438).
+
+// Easy hai but implementation tricky hai.
+/*
+    Map mein minimum time store karte raho.
+    k minimum value le lo.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+        
+        vector < int > category(n);
+        for (int i = 0; i < n; i++)
+            cin >> category[i];
+            
+        vector < int > times(n);
+        for (int i = 0; i < n; i++)
+            cin >> times[i];
+            
+        unordered_map < int, int > mp;
+        for (int i = 0; i < n; i++) 
+            mp[category[i]] = INT_MAX;  // Initially highest time
+        
+        for (int i = 0; i < n; i++)
+            mp[category[i]] = min(mp[category[i]], times[i]);// taking minimum possible time
+
+        // Agar k se kam category hai tab.
+        if (mp.size() < k) {
+            cout << -1 << endl;
+            continue;
+        }
+        vector < int > nums;
+        for (auto & i: mp)
+            nums.push_back(i.second);
+            
+        // Warna k minimum values.
+        sort(nums.begin(), nums.end());
+        long ans = 0;
+        for (int i = 0; i < k; i++)
+            ans += nums[i];
+        cout << ans << endl;
+    }
+}
