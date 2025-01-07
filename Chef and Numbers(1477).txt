@@ -1,0 +1,43 @@
+// Chef and Numbers(1477).
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Kaafi acha question hai (Practical Thinking ka).
+// Hume waisa numbers ka count pata karna hai jisme number + unke digit ka sum + digit ke sum se bane number ke digit ka sum equal ho given number ke.
+
+// Obviously hume digits ka sum find karna hoga.
+int sum(int n) {
+    int s = 0;
+    while (n > 0) {
+        s += n % 10;
+        n /= 10;
+    }
+    return s;
+}
+
+int main() {
+    // Yaha par ek catch hai.
+    // Hum kaha tak check karenge number find karne ke liye. 1 to n tak nahi kar sakte TLE de dega.
+    // Dhyaan se samjho.
+    
+    // Ye to obvious hai ki sum kar rahe hai to wo positive hi dega to hum n se bada number consider nahi kar sakte.
+    // 10^9 se smaller wo number jinke digit ka sum maximum bo wo hai :- 999999999
+    // Inke digit ka sum 81 hoga.
+    // Agar isse bane number ke maximum digit ka sum :- 16 (for 79).
+    // Matlab S(x)+S(S(x))ka maximum value 97 aa sakta hai 
+    // Matlab agar x+S(x)+S(S(x)) equal to n laana hai to hume n-97 tak hi sochna padega .
+    // Nahi to wo numbers ka sum n ke equal nahi aa payega.
+    
+    int n;
+    cin >> n;
+    int cnt = 0;
+    
+    // Isi liye for loop n-97 to n chalaye hai.
+    for (int i = n - 97; i <= n; i++) {
+        if (i + sum(i) + sum(sum(i)) == n)
+            cnt++;
+    }
+    cout << cnt << endl;
+}
