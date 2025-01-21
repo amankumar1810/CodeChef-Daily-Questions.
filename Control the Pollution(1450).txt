@@ -1,0 +1,55 @@
+// Control the Pollution(1450).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Logical question hai but straight forward solution diye hai.
+/*
+    Logic :-
+    Sirf Bus se jaane me kitna pollution hoga.
+    Sirf Car se jaane me kitna pollution hoga.
+    Kuch log bus and kuch log car se jaane me pollution.
+*/
+
+int solve(int n,int x,int y){
+    int pureCar=0,pureBus=0;
+    int mixedCar=0,mixedBus=0;
+    // car mein maximum 4 log and bus me maimum 100 log jaa sakte hai.
+    // Agar remainder ho jaaye to ek new vehicle chahiye.
+    
+    if(n%4)
+        pureCar = n/4 +1;
+    else
+        pureCar = n/4;
+    
+    if(n%100)
+        pureBus = n/100+1;
+    else
+        pureBus = n/100;;
+    
+    // 100 ke multiple wale log ko bus se bhej denge aur baaki car se 
+    mixedBus = n/100;
+    int rem = n%100;
+    if(rem%4)
+        mixedCar = rem/4+1;
+    else
+        mixedCar = rem/4;
+        
+    int ans1 = pureCar*y;
+    int ans2 = pureBus*x;
+    int ans3 = mixedBus*x+mixedCar*y;
+    
+    // Minimum pollution.
+    return min({ans1,ans2,ans3});
+}
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+       int n,x,y;
+       cin>>n>>x>>y;
+       cout<<solve(n,x,y)<<endl;
+    }
+}
