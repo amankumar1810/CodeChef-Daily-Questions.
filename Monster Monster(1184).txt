@@ -1,0 +1,46 @@
+// Monster Monster(1184).
+
+// bahut hi logical question hai ye.
+/*
+    Hume minimum power mein sabko defeat karna hai aur hum kisi nhi order mein start kar sakte hai.
+    
+    Kyu ki har monsters ka health daily x se badh jaa rha hai,
+    is liye try karenge ki jyaada health wale ko pehle hi defeat kar le.
+    Isse uska power last tak jyaada nahi badhega, aur humara power minimize ho jaayega.
+    
+    Iske liye hum reverse sort kar lenge.
+    
+    Ab har minute par x se increase karke dekh lenge.
+    Ye value index par hi depend karega.
+    
+    Ab increased value mein jo sabse large hai, wahi apna answer hoga.
+    
+    int mein overflow ho jaayega, isi liye long long use hua hai.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        long long n, x;
+        cin >> n >> x;
+        vector < long long > monsters(n);// health of each monster.
+        for (int i = 0; i < n; i++)
+            cin >> monsters[i];
+
+        // reverse sort kar liye hai taaki jyaada health waale ko start mein hi defeat kar de, taaki wo last tak jyaada nahi badh paaye.
+        sort(monsters.rbegin(), monsters.rend());
+        for (int i = 0; i < n; i++)
+            monsters[i] = monsters[i] + i * x;
+
+        long long maxi = 0;
+        for (int i = 0; i < n; i++)
+            maxi = max(maxi, monsters[i]);  // Greatest health.
+
+        cout << maxi << endl;
+    }
+}
