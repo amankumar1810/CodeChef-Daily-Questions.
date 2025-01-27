@@ -1,0 +1,43 @@
+// Your Name is Mine(1285).
+
+// Acha question hai ye.
+/*
+    Dono mein se koi doosre ka subsequence hua to hi valid hoga.
+    It's obvious ki chhota wala hi bade ka subsequence ho sakte hai.
+    Check kar liye hai waise hi.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Is w subsequence of m.
+bool isSubsequence(string m, string w) {
+    int j = 0;
+    for (int i = 0; i < m.size(); i++) {
+        if (w[j] == m[i])
+            j++;
+    }
+    return j == w.size();
+}
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        string m, w;
+        cin >> m >> w;
+        // Already Equal.
+        if(m==w){
+            cout << "YES" << endl;
+            continue;
+        }
+        // Bada aur chhota string ka format.
+        if(m.size()<w.size())
+            swap(m,w);
+        // Ek bhi valid hoga, to hi true hoga.
+        if (isSubsequence(m, w))
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
+}
