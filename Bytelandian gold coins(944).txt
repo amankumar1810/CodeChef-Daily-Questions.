@@ -1,0 +1,30 @@
+// Bytelandian gold coins(944).
+
+// Bahut hi lambe samay ke baad aaj solution padhne par samajh aaya.
+/*
+    Main tricky part yaha par input lena hai.
+    Har sum ke liye hum n/2 + n/3 + n/4 consider kiye hai.
+    <12 hone par pura lene mein hi faayda hai.
+    
+    Baaki recursive function se obtain kar liye hai.
+    To avoid overflow - use long.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Recursive Function.
+long solve(long n) {
+    if (n >= 12)
+        return solve(n / 2) + solve(n / 3) + solve(n / 4);
+    else 
+        return n;
+}
+int main() {
+    // Strange way to take input.
+    long n;
+    while (cin >> n) {
+        cout << solve(n) << endl;
+    }
+    return 0;
+}
