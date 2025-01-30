@@ -1,0 +1,55 @@
+// White Wall(1475).
+
+/*
+    Bahut hi acha question hai ye.
+    Ek user ke solution se reference liye hai.
+    
+    Isme necessary nahi hai ki length 3 se divisible ho.
+    
+    Yaha main logic ye hai ki hume har baar ek particular string ka pattern follow karna hoga.
+    
+    Jis pattern mein sabse kam deviation milega, wahi answer hoga.
+    
+    3 characters hai to 6 possible string generate hoga.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+
+        // 6 possible string combination.
+        string a = "RGB";
+        string b = "RBG";
+        string c = "GRB";
+        string d = "GBR";
+        string e = "BGR";
+        string f = "BRG";
+
+        int cnt1 = 0, cnt2 = 0, cnt3 = 0, cnt4 = 0, cnt5 = 0, cnt6 = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i % 3] != s[i])
+                cnt1++;
+            if (b[i % 3] != s[i])
+                cnt2++;
+            if (c[i % 3] != s[i])
+                cnt3++;
+            if (d[i % 3] != s[i])
+                cnt4++;
+            if (e[i % 3] != s[i])
+                cnt5++;
+            if (f[i % 3] != s[i])
+                cnt6++;
+        }
+        
+        // Jo pattern sabse kam deviation de wahi answer hoga.
+        cout << min({cnt1,cnt2,cnt3,cnt4,cnt5,cnt6}) << endl;
+    }
+}
