@@ -1,0 +1,36 @@
+// Easy Pronunciation(1000).
+
+// Ek baar mein 4 se jyada consonant hua to true.
+#include <bits/stdc++.h>
+using namespace std;
+
+int res(string str){
+    int count=0;
+    for(int i=0;i<str.size();i++){
+        
+        if(str[i]!='a' && str[i]!='e' && str[i]!='i' && str[i]!='o' && str[i]!='u' )
+            count++;
+        else count=0;
+        if(count>=4)
+            return 1;
+    }
+    return 0;
+}
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--){
+	    int n;
+	    cin>>n;
+	    string str;
+	    cin>>str;
+	    if(res(str)==1)
+	        cout<<"No"<<endl;
+	    else
+	        cout<<"Yes"<<endl;
+	    
+	}
+	return 0;
+}
