@@ -1,0 +1,44 @@
+// Small, Smaller, Smallest(1403).
+
+// Ye logic strike kar gaya tha.
+/*
+    Thoda solution section se hint mila.
+    Agar saare 0s hi ho yaani ki 1s count=0smatlab even 1s yaani 1 delete hoga jo hai hi nhai.
+    Saara 0 bach jaayega yaani total length of string.
+    
+    Agar 1 odd times hai tab :- 
+    Ek baar mein pura string select karo aur saara 0 delete karo.
+    Ab 1 kam yaani even length select karke saara 1s delete akr do.
+    Tab ek 1 bacha reh jaayega.
+    
+    Agar 1 even times hai Tab:-
+    Hum log try karke saara 0 delete kar paayenge
+    Phir saar 1 to delete ho hi jaayega.
+    
+    Bas ho gya solve.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        string str;
+        cin >> str;
+        int cnt1 = 0;
+        for (char & i: str) {
+            if (i == '1')
+                cnt1++;
+        }
+        if (cnt1 % 2 == 1)
+            cout << 1 << endl;
+        else if (cnt1 == 0)
+            cout << n << endl;
+        else
+            cout << 0 << endl;
+    }
+}
