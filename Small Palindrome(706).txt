@@ -1,0 +1,51 @@
+// Small Palindrome(706).
+
+// Easy and logical question hai ye.
+/*
+    Ye to obvious hai ki smallest banane ke liye start mein 1 hona chahiye, 2 nahi.
+    Hume palindrome ka bhi dhyaan rakhna hai.
+    Pehle saare 1 daal lenge, phir saare 2.
+    Ek start aur ek last mein jisse palindrome bana rahe.
+    
+    1 and 2 ka count even hone se kaam easy ho gaya hai.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int x, y;
+        cin >> x >> y;
+        vector < long > v(x + y);   // Hume saare 1 and 2 use karna hai.
+        int i = 0, j = x + y - 1;   // ek satrt se aur ek end se daale hai.
+        
+        // Pehle saare 1 daal liye.
+        while (x > 0) {
+            v[i] = 1;
+            v[j] = 1;
+            i++;
+            j--;
+            x -= 2;
+        }
+        
+        // Phir saare 2 daal liye.
+        while (y > 0) {
+            v[i] = 2;
+            v[j] = 2;
+            i++;
+            j--;
+            y -= 2;
+        }
+        
+        // Ab answer construct kar liye hai.
+        long ans = 0;
+        for (int i = 0; i < v.size(); i++) {
+            ans = ans * 10 + v[i];
+        }
+        cout << ans << endl;
+    }
+}
