@@ -1,0 +1,44 @@
+// Tax Slabs(1406).
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int temp = n;
+        int ans = 0;
+        if (n > 1500000) {
+            ans += 0.3 * (n - 1500000);
+            n = 1500000;
+        }
+        if (n > 1250000) {
+            ans += 0.25 * (n - 1250000);
+            n = 1250000;
+        }
+        if (n > 1000000) {
+            ans += 0.2 * (n - 1000000);
+            n = 1000000;
+        }
+        if (n > 750000) {
+            ans += 0.15 * (n - 750000);
+            n = 750000;
+        }
+        if (n > 500000) {
+            ans += 0.1 * (n - 500000);
+            n = 500000;
+        }
+        if (n > 250000)
+            ans += 0.05 * (n - 250000);
+
+        cout << temp - ans << endl;
+
+
+
+    }
+}
