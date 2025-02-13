@@ -1,0 +1,14 @@
+// Time Penalty(120).
+
+// Ek dum basic question hai ye.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int x, y;
+    cin >> x >> y;
+    int ans = x + 10 * y;
+    cout << ans << endl;
+}
