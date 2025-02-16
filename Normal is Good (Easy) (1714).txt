@@ -1,0 +1,50 @@
+// Normal is Good (Easy) (1714).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Mean and medain same hona chahiye.
+/*
+    Kyuki isme sirf 1 and 2 hai element mein to mean and median same tab hi ho
+    paayega jab subarray ka saara element same ho yaani sab ya to 1 or ya to 2.
+    
+    Ab n same elements ke sub-array mein total sub-array = n*(n-1)/2 hoga.
+    Copy par dekh lo isko likhkar.
+    
+    Ab bas sab ka sum nikaal do.
+
+*/
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> nums(n);
+        for(int i=0;i<n;i++)
+            cin>>nums[i];
+         
+        // 1 length ka sabhi sub-array hoga pakka.   
+        long long ans = n;
+        
+        int i=1;
+        long long cnt = 0;
+        while(i<n){
+            if(nums[i]==nums[i-1])
+                cnt++;
+            else{
+                // kyuki yaha count 0 se start kiye hai to 1 kam hi element hoga.
+                // isiliye n-1 ki tarah treat kiye hai usko.
+                ans=ans+(cnt*(cnt+1))/2;
+                cnt = 0;
+            }
+            i++;
+        }
+        
+        // last wale ke liye bhi check karna jaruri hota hai.
+        ans=ans+(cnt*(cnt+1))/2;
+        
+        cout<<ans<<endl;
+    }
+}
