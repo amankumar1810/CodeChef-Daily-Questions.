@@ -1,0 +1,48 @@
+// Chef and Adventures(1462).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int solve(int n,int m,int x,int y){
+    // Already equal
+    if((n==1 && m==1) || (n==2 && m==2))
+        return true;
+        
+    // Only Power
+    if(n==1){
+        if((m-1)%y!=0)
+            return false;
+    }
+    
+    //Only Knowledge
+    if(m==1){
+        if((n-1)%x!=0)
+            return false;
+    }
+    
+    // without download.
+    if((n-1)%x==0 && (m-1)%y==0)
+        return true;
+        
+    // with download.
+    if((n-2)%x==0 && (m-2)%y==0)
+        return true;
+        
+    // Otherwise
+    return false;
+}
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m,x,y;
+        cin>>n>>m>>x>>y;
+        
+        if(solve(n,m,x,y))
+            cout<<"Chefirnemo"<<endl;
+        else
+            cout<<"Pofik"<<endl;
+    }
+}
