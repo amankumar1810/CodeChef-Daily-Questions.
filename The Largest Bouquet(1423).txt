@@ -1,0 +1,41 @@
+// The Largest Bouquet(1423).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        long long mg,my,mr;
+        cin>>mg>>my>>mr;
+        
+        long long og,oy,Or;
+        cin>>og>>oy>>Or;
+        
+        long long pg,py,pr;
+        cin>>pg>>py>>pr;
+        
+        long long a = mg+my+mr;
+        long long b = og+oy+Or;
+        long long c = pg+py+pr;
+        
+        long long d = mg+og+pg;
+        long long e = my+oy+py;
+        long long f = mr+Or+pr;
+        
+        long long arr[] = {a,b,c,d,e,f};
+        long long ans = INT_MIN;
+        for(int i=0;i<6;i++)
+            ans = max(ans,arr[i]);
+        if(ans!=0){
+            if(ans%2==0)
+                cout<<ans-1<<endl;
+            else
+                cout<<ans<<endl;
+        }
+        else
+            cout<<0<<endl;
+    }
+}
