@@ -1,0 +1,20 @@
+// Chef and Remissness(928).
+
+// A and B apna apna count kar loye hai.
+// Jo maximum baar count kiya hai at least utni baar to chef aaya hoga.
+// Maxium baar ka naswer dono ka sum hoga kyu ki may be dono independent count kiya ho.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int a, b;
+        cin >> a >> b;
+        cout << max(a, b) << " " << (a + b) << endl;
+    }
+}
+
