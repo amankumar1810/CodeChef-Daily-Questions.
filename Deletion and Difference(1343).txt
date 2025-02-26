@@ -1,0 +1,50 @@
+// Deletion and Difference(1343).
+
+// Finally ab jaake ban gaya.
+/*
+    Basically yaha par 0 aur deleted pairs ko count kar diye hai.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector < int > nums(n);
+        for (int i = 0; i < n; i++)
+            cin >> nums[i];
+        
+        sort(nums.begin(), nums.end()); // isse equal pairs identify karna easy hoga.
+        int zeros = 0;
+        int deleted = 0;
+        if (nums[n - 1] == 0) {
+            // Sab 0 hai yaani bas 1 hi bach paayega.
+            cout << 1 << endl;
+            continue;
+        }
+        for (int i = 0; i < n - 1; i++) {
+            // 0 ka count
+            if (nums[i] == 0) {
+                zeros++;
+                continue;
+            }
+            // Equal pair ka count.
+            else if (nums[i] == nums[i + 1]) {
+                zeros++;    // ek pair ke delete hone par 1 zero badh jaayega.
+                i++;    // ek pair ho gya to next element ko include nahi karenge
+                deleted++;
+            }
+        }
+        // Agar ek bhi 0 nahi aaya matlab koi equal pair nahi hai, matlab pura array as it is rahega.
+        if (zeros == 0)
+            cout << n << endl;
+        
+        // Warna delete karke bas 1 zero aur baaki elements bach jaayenge. 
+        else
+            cout << n - zeros - deleted + 1 << endl;
+    }
+}
