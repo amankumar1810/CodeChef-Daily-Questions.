@@ -1,0 +1,32 @@
+// Pet Store(1126).
+
+// Ek dum obvious question and solution hai ye.
+#include <bits/stdc++.h>
+using namespace std;
+
+bool solve(vector < int > animals, int n) {
+    unordered_map < int, int > mp;
+    for (int & i: animals)
+        mp[i]++;
+    for (auto & i: mp) {
+        if (i.second % 2)
+            return false;
+    }
+    return true;
+}
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector < int > animals(n);
+        for (int i = 0; i < n; i++)
+            cin >> animals[i];
+        if (solve(animals, n))
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
+}
