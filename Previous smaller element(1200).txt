@@ -1,0 +1,32 @@
+// Previous smaller element(1200).
+
+// Ek dum Standard Question hai ye.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector < int > nums(n);
+        for (int i = 0; i < n; i++)
+            cin >> nums[i];
+        stack < int > stk;
+        stk.push(nums[0]);
+        vector < int > ans(n);
+        ans[0] = -1;
+        for (int i = 1; i < n; i++) {
+            while (!stk.empty() && stk.top() >= nums[i])
+                stk.pop();
+            ans[i] = stk.empty() ? -1 : stk.top();
+            stk.push(nums[i]);
+        }
+        for (int & i: ans)
+            cout << i << " ";
+        cout << endl;
+    }
+}
