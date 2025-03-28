@@ -1,0 +1,37 @@
+// Lost in the Fest!!(872).
+
+// bahut hi simple question hai ye.
+/*
+    Bhoomi ko dekhne ke liye uske aage ke saare logo ka height usse chhota hona chahiye.
+    Aaage se dekh lenge ki kaun sa wo 1st index hai jaha par ke person ka height Bhoomi ke height se greater ya equal hai.
+    Bas un dono ke beech ka difference nikaal dena hai.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        // Height of all students.
+        vector < int > height(n);
+        for (int i = 0; i < n; i++)
+            cin >> height[i];
+            
+        int bhoomiHeight = height[n - 1];
+        int idx = -1;   // 1st index jispar ke person ka height Bhoomi ke height se greater ya equal hai.
+        for (int i = 0; i < n; i++) {
+            if (height[i] >= bhoomiHeight) {
+                idx = i;
+                break;
+            }
+        }
+        // Har second 1 position aage move kar rahi hai Bhoomi.
+        // Dono ke position ka difference hi answer hoga.
+        cout << (n - 1 - idx) << endl;
+    }
+}
