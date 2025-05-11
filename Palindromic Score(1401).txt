@@ -1,0 +1,37 @@
+// Palindromic Score(1401).
+
+// Solution section se padhkar samak=jh gaye hai isko.
+/*
+    Basically isme bola ye gaya hai ki hum apne marzi se arrangement kar denge.
+    Opponent aakar remove kar dega ek element ke saare occurence ko.
+    Palindromic SubsequenceO ka longest length batana hai hume.
+    
+    Yaha par ye dekhenge ki 1 type ke element ko remove karne par jo 2 element bach jaayenge unka freq. kaisa hoga.
+    Agar dono even hai to koi dikkat nahi hoga, unke saare ko lekar bana sakte hai palindrome
+    Ek even ek odd mein bhi kaam chal jaayega.
+    Dono odd ho to dikkat hoga.
+    Ek element consider nahi ho paayega palindrome mein.
+    
+    Kyuki Opponent bhi optimally hi khelega, isi liye hum minimum value hi consider karenge.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        
+        // Dono odd freq. hone par && operation 1 value dega, isi liye usko -1 karna padega.
+        int ans1 = a + b - (a % 2 == 1 && b % 2 == 1);
+        int ans2 = b + c - (b % 2 == 1 && c % 2 == 1);
+        int ans3 = a + c - (a % 2 == 1 && c % 2 == 1);
+        
+        // minimum answer hi lenge hum.
+        cout << min({ans1, ans2, ans3}) << endl;
+    }
+}
