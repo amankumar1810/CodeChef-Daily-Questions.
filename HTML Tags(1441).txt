@@ -1,0 +1,31 @@
+// HTML Tags(1441).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool solve(string str){
+    int n = str.size();
+    if(n<=3)
+        return false;
+    if(str[0]!='<' || str[1]!='/' || str[n-1]!='>')
+        return false;
+    for(int i=2;i<n-1;i++){
+        if(!((str[i]>=48 && str[i]<=57) || (str[i]>=97 && str[i]<=122)))
+            return false;
+    }
+    return true;
+}
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        string str;
+        cin>>str;
+        if(solve(str))
+            cout<<"Success"<<endl;
+        else
+            cout<<"Error"<<endl;
+    }
+}
