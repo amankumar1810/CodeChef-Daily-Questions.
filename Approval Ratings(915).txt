@@ -1,0 +1,40 @@
+// Approval Ratings(915).
+
+// Easily ban gaya.
+/*
+    yaha par average 7 ke liye hume total 35 score chahiye.
+    Try karenge ki jo sabse kam marks de rha hai, usko bribe karke full 10 marks le lein.
+    Agar 35 ya usse jyada marks pahuch gaya to kaam ban gaya.
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int solve(vector < int > & nums) {
+    int sum = 0;
+    for (int & i: nums)
+        sum += i;
+    if (sum >= 35)
+        return 0;
+    int diff = 35 - sum;
+    int cnt = 0;
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < 5; i++) {
+        int diff1 = 10 - nums[i];
+        diff -= diff1;
+        cnt++;
+        if (diff <= 0)
+            return cnt * 100;
+    }
+    return cnt * 100;
+}
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        vector < int > nums(5);
+        for (int i = 0; i < 5; i++)
+            cin >> nums[i];
+        cout << solve(nums) << endl;
+    }
+}
