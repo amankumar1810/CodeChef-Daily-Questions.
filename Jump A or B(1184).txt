@@ -1,0 +1,44 @@
+// Jump A or B(1184).
+
+// ChatGPT se help liye hai.
+/*
+    Acha logic hai.
+    Hume total n jumps lekar m point par pahuchna hai.
+    Har jump mein ya to a ya to b distance travel hoga.
+    
+    Let, x jumps lagaye hai a distance wala
+    so, (n-x) jumps hoga b distance wala.
+    so, total distance => m = a*x + b*(n-x);
+    m = x*(a-b) +n*b;
+    x = (m-n*b)/(a-b);
+    
+    sahi answer ke liye x ka value integer hona chahiye.
+    saath hi value 0 se n tak lie karna chahiye, kyu ki n se jyaada jump possible nahi hona chahiye.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, m, a, b;
+        cin >> n >> m >> a >> b;
+
+        int value = m - n * b;
+        
+        // Result interger value hi nahi hai.
+        if (value % (a - b) != 0)
+            cout << "NO" << endl;
+        else{
+            int result = value / (a - b);
+            // n jumps mein possible hai.
+            if (result >= 0 && result <= n)
+                cout << "YES" << endl;
+            else
+                cout << "NO" << endl;
+        }
+    }
+}
